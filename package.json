@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ./ --ext js,jsx,ts,tsx"
+    "lint": "eslint ./ --ext js,jsx,ts,tsx",
+    "format": "prettier '**/*.(js|jsx|ts|tsx|json|css|scss|md|mdx|html)' --write",
+    "format:check": "prettier '**/*.(js|jsx|ts|tsx|json|css|scss|md|mdx|html)' --check"
   },
   "dependencies": {
     "next": "10.0.5",
