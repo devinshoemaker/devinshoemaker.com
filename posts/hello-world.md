@@ -1,0 +1,10 @@
+---
+title: 'Hello World!'
+date: '2021-01-25'
+---
+
+I have wanted to build a personal website to share my thoughts, projects, and personal history, but never had to motivation to get it done. Over the last few weeks I have been working more and more with Next.js and Tailwind, and these tools compelled me to finally build a website for myself.
+
+For what it's worth, my blog will be more of a "digital garden" rather than a more formal blog. I plan to document and share my learnings in small bite-sized posts. I also plan to add my past blog posts from my [dev.to](https://dev.to/devinshoemaker) blog over time.
+
+I'm excited to have a dedicated place to share my learnings, projects, and history. There will be a lot of updates coming to this site, so stay tuned!
