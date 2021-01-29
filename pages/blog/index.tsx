@@ -20,7 +20,7 @@ export default function Blog({ sortedPostData }) {
       <Head>
         <title>Blog</title>
       </Head>
-      {sortedPostData.map((postData) => (
+      {sortedPostData.map((postData: any, index: number) => (
         <article key={postData.id}>
           <Link href={`/blog/${postData.id}`}>
             <a className="text-6xl text-gray-900 dark:text-gray-100 underline">
@@ -34,7 +34,9 @@ export default function Blog({ sortedPostData }) {
             className={styles.markdown}
             dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
           />
-          <hr className="mt-16 mb-16 border-gray-900 dark:border-gray-100 w-2/3 mx-auto" />
+          {index < sortedPostData.length - 1 && (
+            <hr className="mt-16 mb-16 border-gray-900 dark:border-gray-100 w-2/3 mx-auto" />
+          )}
         </article>
       ))}
     </Layout>

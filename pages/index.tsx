@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export default function Home() {
   return (
-    <div className="p-12 pt-24">
+    <div className="p-12 pt-24 pb-24">
       <Head>
         <title>Devin Shoemaker</title>
         <link rel="icon" href="/favicon.ico" />
