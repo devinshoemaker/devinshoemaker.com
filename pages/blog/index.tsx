@@ -20,13 +20,10 @@ export default function Blog({ sortedPostData }) {
       <Head>
         <title>Blog</title>
       </Head>
-      <h1 className="text-6xl mb-10 text-gray-900 dark:text-gray-100">
-        Blog Posts
-      </h1>
       {sortedPostData.map((postData) => (
         <article key={postData.id}>
           <Link href={`/blog/${postData.id}`}>
-            <a className="text-4xl text-gray-900 dark:text-gray-100 underline">
+            <a className="text-6xl text-gray-900 dark:text-gray-100 underline">
               {postData.title}
             </a>
           </Link>
