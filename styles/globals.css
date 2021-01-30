@@ -6,8 +6,76 @@ body {
   @apply bg-gray-100;
 }
 
+h1 {
+  @apply text-6xl;
+  @apply text-gray-900;
+}
+
+h2 {
+  @apply text-4xl;
+  @apply text-gray-900;
+}
+
+p {
+  @apply mt-6;
+  @apply mb-6;
+  @apply text-gray-900;
+  @apply text-xl;
+}
+
+li {
+  @apply text-green-900;
+  @apply list-disc;
+  @apply list-inside;
+}
+
+pre {
+  @apply mt-4;
+  @apply mb-4;
+  @apply p-4;
+  @apply bg-gray-900;
+  @apply text-gray-100;
+  @apply block;
+  @apply rounded-lg;
+  @apply shadow-md;
+  @apply overflow-auto;
+}
+
+code {
+  @apply px-1;
+  @apply rounded;
+  @apply inline-block;
+  @apply bg-gray-900;
+  @apply text-gray-100;
+  @apply shadow-lg;
+}
+
 @media (prefers-color-scheme: dark) {
   body {
     @apply bg-gray-900;
+  }
+
+  h1 {
+    @apply text-gray-100;
+  }
+
+  h2 {
+    @apply text-gray-100;
+  }
+
+  p {
+    @apply text-gray-100;
+  }
+
+  li {
+    @apply text-gray-100;
+  }
+
+  pre {
+    @apply bg-black;
+  }
+
+  code {
+    @apply bg-black;
   }
 }
