@@ -2,7 +2,6 @@ import Head from 'next/head';
 import Date from '../../components/Date';
 import Layout from '../../components/Layout';
 import { getSortedPostsData } from '../../lib/posts';
-import styles from '../../styles/markdown.module.css';
 import Link from 'next/link';
 
 export async function getStaticProps() {
@@ -30,10 +29,7 @@ export default function Blog({ sortedPostData }) {
           <div className="mt-4 text-gray-900 dark:text-gray-100">
             <Date dateString={postData.date} />
           </div>
-          <div
-            className={styles.markdown}
-            dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
-          />
+          <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
           {index < sortedPostData.length - 1 && (
             <hr className="mt-16 mb-16 border-gray-900 dark:border-gray-100 w-2/3 mx-auto" />
           )}
