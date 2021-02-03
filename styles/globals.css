@@ -23,6 +23,10 @@ p {
   @apply text-xl;
 }
 
+a {
+  @apply underline;
+}
+
 li {
   @apply text-green-900;
   @apply list-disc;
