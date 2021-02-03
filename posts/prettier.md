@@ -61,9 +61,9 @@ This will automatically run Prettier against your staged files that are within t
 
 ## Resources
 
-Prettier: https://prettier.io<br/>
-Playground: https://prettier.io/playground/<br/>
-CLI: https://prettier.io/docs/en/cli.html<br/>
-Configuration: https://prettier.io/docs/en/configuration.html<br/>
-Ignoring files: https://prettier.io/docs/en/ignore.html<br/>
-Pre-commit hooks: https://prettier.io/docs/en/precommit.html
+[Prettier](https://prettier.io)<br/>
+[Playground](https://prettier.io/playground/)<br/>
+[CLI](https://prettier.io/docs/en/cli.html)<br/>
+[Configuration](https://prettier.io/docs/en/configuration.html)<br/>
+[Ignoring files](https://prettier.io/docs/en/ignore.html)<br/>
+[Pre-commit hooks](https://prettier.io/docs/en/precommit.html)
