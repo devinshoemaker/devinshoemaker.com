@@ -13,7 +13,8 @@ function NavBarExternalLink({ href, icon }: NavBarExternalLinkProps) {
       <FontAwesomeIcon
         icon={icon}
         color="white"
-        className="h-8 text-gray-900 dark:text-gray-100"
+        size="lg"
+        className="text-gray-900 dark:text-gray-100"
       />
     </a>
   );
