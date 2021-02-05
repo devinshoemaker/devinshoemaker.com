@@ -1,4 +1,5 @@
 import {
+  faDev,
   faGithub,
   faTwitch,
   faTwitter,
@@ -15,6 +16,7 @@ function NavBar() {
         <NavBarLink label="About" href="/about" />
       </nav>
       <div className="flex">
+        <NavBarExternalLink href="https://dev.to/devinshoemaker" icon={faDev} />
         <NavBarExternalLink
           href="https://twitch.tv/paranoidcoder"
           icon={faTwitch}
