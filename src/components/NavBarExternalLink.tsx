@@ -9,7 +9,7 @@ interface NavBarExternalLinkProps {
 
 function NavBarExternalLink({ href, icon }: NavBarExternalLinkProps) {
   return (
-    <a href={href} target="blank" className="ml-6">
+    <a href={href} target="blank" className="mr-6">
       <FontAwesomeIcon
         icon={icon}
         color="white"

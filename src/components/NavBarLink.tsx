@@ -7,9 +7,9 @@ interface NavBarLinkProps {
 
 function NavBarLink({ label, href }: NavBarLinkProps) {
   return (
-    <ul style={{ height: 'fit-content' }}>
+    <ul style={{ height: 'fit-content' }} className="ml-6">
       <Link href={href}>
-        <a className="mr-4 text-xl text-gray-100 no-underline">{label}</a>
+        <a className="text-xl text-gray-100 no-underline">{label}</a>
       </Link>
     </ul>
   );
