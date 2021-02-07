@@ -1,0 +1,95 @@
+---
+title: 'Use Tailwind CSS with React Apps in Nx'
+description: 'Configure an Nx workspace with a React application to use the popular Tailwind CSS framework.'
+date: '2021-04-06'
+---
+
+[Tailwind](https://tailwindcss.com) is a popular utility-based CSS framework that enables developers to rapidly implement and iterate on design. Responsive design and dark mode are easier than ever to implement, and so far I have been very happy with Tailwind and even use it on my site.
+
+## Install Tailwind Dependencies
+
+Nx 11 still uses PostCSS 7, so we have to install Tailwind dependencies in PostCSS 7 compatibility mode.
+
+```
+npm install tailwindcss@npm:@tailwindcss/postcss7-compat @tailwindcss/postcss7-compat postcss@^7 autoprefixer@^9
+
+# or
+
+yarn add tailwindcss@npm:@tailwindcss/postcss7-compat @tailwindcss/postcss7-compat postcss@^7 autoprefixer@^9
+```
+
+## Initialize Tailwind
+
+```
+npx tailwindcss init -p
+```
+
+## Purge CSS
+
+Tailwind requires us to specify the files that we should purge the CSS from. Without purging CSS, all of the Tailwind styles are loaded into the application which is quite large. When we purge the CSS, we can remove all the unused styles.
+
+Update `tailwind.config.js`:
+
+```
+module.exports = {
+  purge: ['./apps/my-app/**/*.{js,ts,jsx,tsx}'],
+  darkMode: false, // or 'media' or 'class'
+  theme: {
+    extend: {},
+  },
+  variants: {
+    extend: {},
+  },
+  plugins: [],
+}
+
+```
+
+Make sure to replace `my-app` with the name of your application. If additional applications are added to your workspace that will use Tailwind then you will need to add another string to the `purge` property accordingly.
+
+## Extend Webpack Config
+
+The default `@nrwl/react` Webpack config does not include the PostCSS loader, so we need to override it.
+
+Create a file called `react-tailwind.webpack.config.js`:
+
+```
+const nrwlConfig = require('@nrwl/react/plugins/webpack.js');
+
+module.exports = (config) => {
+  nrwlConfig(config);
+  return {
+    ...config,
+    module: {
+      rules: [
+        ...config.module.rules,
+        {
+          test: /\.css$|\.scss$|\.sass$|\.less$|\.styl$/,
+          use: [
+            {
+              loader: 'postcss-loader',
+            },
+          ],
+        },
+      ],
+    },
+  };
+};
+
+```
+
+Next, update your `workspace.json` and replace the `webpackConfig` for your app:
+
+```
+"webpackConfig": "react-tailwind.webpack.config.js"
+```
+
+## Import Tailwind Styles
+
+Next, in order to use the Tailwind styles, you must import them in your root component:
+
+```
+import 'tailwindcss/tailwind.css';
+```
+
+Now you should be able to use Tailwind CSS classes within your Nx React application.
