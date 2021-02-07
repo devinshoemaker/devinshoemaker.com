@@ -1,9 +1,9 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import Date from '../../components/Date';
-import Layout from '../../components/Layout';
-import { BLOG_CONTENT_PATH } from '../../lib/constants';
-import { getMdxContent } from '../../lib/get-mdx-content';
+import Date from '../../src/components/Date';
+import Layout from '../../src/components/Layout';
+import { BLOG_CONTENT_PATH } from '../../src/lib/constants';
+import { getMdxContent } from '../../src/lib/get-mdx-content';
 
 export async function getStaticProps() {
   const posts = await getMdxContent(BLOG_CONTENT_PATH);

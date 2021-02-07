@@ -1,11 +1,12 @@
 import hydrate from 'next-mdx-remote/hydrate';
 import Head from 'next/head';
-import Date from '../../components/Date';
-import Layout from '../../components/Layout';
-import { getMdxContent } from '../../lib/get-mdx-content';
+import Date from '../../src/components/Date';
+import Layout from '../../src/components/Layout';
+import { BLOG_CONTENT_PATH } from '../../src/lib/constants';
+import { getMdxContent } from '../../src/lib/get-mdx-content';
 
 export async function getStaticPaths() {
-  const posts = await getMdxContent('./posts');
+  const posts = await getMdxContent(BLOG_CONTENT_PATH);
   const paths = posts.map(({ slug }) => ({
     params: {
       slug: slug.split('/'),
@@ -19,7 +20,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: { slug } }) {
-  const posts = await getMdxContent('./posts');
+  const posts = await getMdxContent(BLOG_CONTENT_PATH);
   const postSlug = slug.join('/');
   const [post] = posts.filter((post) => post.slug === postSlug);
 
