@@ -13,6 +13,7 @@ function NavBar() {
       <nav className="flex">
         <NavBarLink label="Home" href="/" />
         <NavBarLink label="Blog" href="/blog" />
+        <NavBarLink label="Projects" href="/projects" />
         <NavBarLink label="About" href="/about" />
       </nav>
       <div className="flex">
