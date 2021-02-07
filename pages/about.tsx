@@ -1,6 +1,6 @@
 import Head from 'next/head';
-import Layout from '../components/Layout';
-import styles from '../styles/video.module.css';
+import Layout from '../src/components/Layout';
+import styles from '../src/styles/video.module.css';
 
 export default function About() {
   return (
