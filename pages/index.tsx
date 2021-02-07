@@ -9,7 +9,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header className="m-0 text-6xl md:text-8xl text-gray-900 dark:text-gray-100">
+      <header className="m-0 text-5xl md:text-8xl text-gray-900 dark:text-gray-100">
         Devin Shoemaker
       </header>
 
