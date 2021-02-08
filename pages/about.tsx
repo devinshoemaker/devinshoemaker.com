@@ -14,6 +14,33 @@ export default function About() {
         <h1 className="mb-6">Appearances</h1>
 
         <section>
+          <h2>
+            Add mobile capabilities to Nx Workspace using Nxtend - BLS026 SHOW &
+            TELL WITH DEVIN SHOEMAKER
+          </h2>
+          <span className="text-gray-900 dark:text-gray-100">
+            February 8th, 2021
+          </span>
+          <p>
+            Beeman invites me onto his show to talk about the suite of Nxtend
+            plugins. We demo creating a brand Ionic application in an Nx
+            workspace that can compile to a native iOS application.
+          </p>
+          <div className={styles.videoWrapper}>
+            <iframe
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/zzPBif1jLaw"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          </div>
+        </section>
+
+        <hr className="mt-16 mb-16 border-gray-900 dark:border-gray-100 w-2/3 mx-auto" />
+
+        <section className="mt-12">
           <h2>Nx Office Hours: Nx Plugin Development for React</h2>
           <span className="text-gray-900 dark:text-gray-100">
             January 25th, 2021
