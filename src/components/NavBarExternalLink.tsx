@@ -10,12 +10,7 @@ interface NavBarExternalLinkProps {
 function NavBarExternalLink({ href, icon }: NavBarExternalLinkProps) {
   return (
     <a href={href} target="blank" className="mr-6">
-      <FontAwesomeIcon
-        icon={icon}
-        color="white"
-        size="lg"
-        className="text-gray-900 dark:text-gray-100"
-      />
+      <FontAwesomeIcon icon={icon} size="lg" className="text-gray-100" />
     </a>
   );
 }
