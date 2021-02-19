@@ -1,0 +1,218 @@
+---
+title: 'Configure ESLint for Next.js'
+date: '2021-02-18'
+description: 'Learn how to manually configure ESLint for Next.js.'
+---
+
+By default, Next.js does not come with any linting solution. [ESLint](https://eslint.org/) is commonly used for linting modern web applications, and is a good companion to Next.js.
+
+## Install ESLint Dependencies
+
+First, we need to install these ESLint dependencies:
+
+```
+npm install --save-dev eslint eslint-plugin-react
+
+# or
+
+yarn add --dev eslint eslint-plugin-react
+```
+
+`eslint` is the CLI and main package responsible for linting your project.
+
+`eslint-plugin-react` is a plugin for ESLint with rules specific to React.
+
+## Generate ESLint Config
+
+ESLint requires a config in the root of the project, which can be easily generated with the CLI.
+
+```
+npx eslint --init
+
+# or
+
+yarn run eslint --init
+```
+
+This command will prompt you for a series of questions:
+
+- Select `To check syntax and find problems`
+- Select `JavaScript modules` as the type of module your project uses
+- Select `React` as the type of framework your project uses
+- Select whether your project uses TypeScript. Note: if you do not already have TypeScript configured then your linter will fail. However, you can easily set this up later with this guide: [[eslint-typescript]].
+- Select `Browser` as the environment where your code will run in
+- Select what format you want the ESLint config to be in. I personally prefer JSON.
+- If prompted to install dependencies, click `Yes`
+
+You should now have an `.eslintrc.*` file generated at the root of your project.
+
+ESLint can now be used with the following commands:
+
+```
+npx eslint pages/*
+
+# or
+
+yarn run pages/*
+```
+
+The commands above will only lint the files inside `pages/`, but you can customize this however you see fit. You can also specify multiple directories: `pages/* components/*`
+
+For more information on using the CLI, visit the [official documentation](https://eslint.org/docs/user-guide/command-line-interface).
+
+## Update ESLint Config for Next.js
+
+If you run ESLint as-is then you'll likely have some linting errors. To fix this, we need to update the ESLint config rules to fit Next.js.
+
+The first thing we need to fix is the warning: `Warning: React version not specified in eslint-plugin-react settings`
+
+To get rid of this, we can add `settings` property at the root of our config:
+
+```
+{
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    },
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended"
+    ],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+    }
+}
+```
+
+Open the ESLint config that was generated and edit the `rules` object:
+
+```
+{
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    },
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended"
+    ],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+        "react/prop-types": "off",
+        "react/react-in-jsx-scope": "off"
+    }
+}
+```
+
+The `react/prop-types` rule enforces that all components have [`prop-types`](https://reactjs.org/docs/typechecking-with-proptypes.html) defined. While we can use `prop-types` with Next.js, TypeScript is typically preferred.
+
+The `react/react-in-jsx-scope` rule will throw an error if a component files not import React. With React 17, which Next.js now ships with, it is no longer necessary to import React and thus this rule can be disabled.
+
+Finally, we need to update the `env` property to include `node` since Next.js supports Server Side Rendering in Node.
+
+```
+{
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    },
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "node": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended"
+    ],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+        "react/prop-types": "off",
+        "react/react-in-jsx-scope": "off"
+    }
+}
+```
+
+## Ignore Unnecessary Files
+
+Now that we have ESLint working properly with Next.js, we need to add a file to tell ESLint to ignore certain files that we do not want linted.
+
+Create a file called `.eslintignore` at the root of your project with these contents:
+
+```
+**/node_modules/*
+**/out/*
+**/.next/*
+```
+
+## Add Lint Script to package.json
+
+The `scripts` property in your `package.json` can be updated to add a `lint` script to make linting easier:
+
+```
+{
+  "name": "my-site",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint ./ --ext js,jsx,ts,tsx"
+  },
+  "dependencies": {
+    "next": "10.0.5",
+    "react": "17.0.1",
+    "react-dom": "17.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.18.0",
+    "eslint-plugin-react": "^7.22.0"
+  }
+}
+```
+
+In this `lint` script we are calling the ESLint CLI, telling it to lint files under the current folder (`./`), and looking for files with the extensions `js`, `jsx`, `ts`, or `tsx`.
+
+## References
+
+[ESLint Getting started](https://eslint.org/docs/user-guide/getting-started)
+[Start a clean Next.js project with TypeScript, ESLint and Prettier from scratch](https://paulintrognon.fr/blog/typescript-prettier-eslint-next-js)
