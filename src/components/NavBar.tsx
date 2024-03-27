@@ -14,7 +14,7 @@ function NavBar() {
         <NavBarLink label="Home" href="/" />
         <NavBarLink label="Blog" href="/blog" />
         <NavBarLink label="Projects" href="/projects" />
-        <NavBarLink label="About" href="/about" />
+        <NavBarLink label="Appearances" href="/appearances" />
       </nav>
       <div className="flex ml-6">
         <NavBarExternalLink href="https://dev.to/devinshoemaker" icon={faDev} />
