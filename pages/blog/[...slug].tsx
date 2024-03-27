@@ -1,9 +1,9 @@
-import hydrate from 'next-mdx-remote/hydrate';
 import Head from 'next/head';
 import Date from '../../src/components/Date';
 import Layout from '../../src/components/Layout';
 import { BLOG_CONTENT_PATH } from '../../src/lib/constants';
 import { getMdxContent } from '../../src/lib/get-mdx-content';
+import { MDXRemote } from 'next-mdx-remote';
 
 export async function getStaticPaths() {
   const posts = await getMdxContent(BLOG_CONTENT_PATH);
@@ -37,8 +37,6 @@ export async function getStaticProps({ params: { slug } }) {
 }
 
 export default function BlogPost({ mdxSource, frontMatter }) {
-  const content = hydrate(mdxSource);
-
   return (
     <Layout>
       <Head>
@@ -51,7 +49,7 @@ export default function BlogPost({ mdxSource, frontMatter }) {
         <div className="mt-4 text-gray-900 dark:text-gray-100">
           <Date dateString={frontMatter.date} />
         </div>
-        {content}
+        <MDXRemote {...mdxSource} />
       </article>
     </Layout>
   );

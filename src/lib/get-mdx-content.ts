@@ -1,8 +1,8 @@
 import glob from 'fast-glob';
 import { promises as fs } from 'fs';
 import matter from 'gray-matter';
-import renderToString from 'next-mdx-remote/render-to-string';
 import path from 'path';
+import { serialize } from 'next-mdx-remote/serialize';
 
 export async function getMdxContent(source: string) {
   const contentGlob = `${source}/**/*.mdx`;
@@ -19,7 +19,7 @@ export async function getMdxContent(source: string) {
 
       const mdxSource = await fs.readFile(filepath);
       const { content, data } = matter(mdxSource);
-      const mdx = await renderToString(content, { scope: data });
+      const mdx = await serialize(content, { scope: data });
 
       return {
         filepath,
