@@ -37,10 +37,11 @@ export default function Blog({ allMdx }) {
       {allMdx.map((postData: any, index: number) => {
         return (
           <article key={postData.slug}>
-            <Link href={`/blog/${postData.slug}`}>
-              <a className="text-6xl text-gray-900 dark:text-gray-100 underline">
-                {postData.title}
-              </a>
+            <Link
+              href={`/blog/${postData.slug}`}
+              className="text-6xl text-gray-900 dark:text-gray-100 underline"
+            >
+              {postData.title}
             </Link>
 
             <div className="mt-2 text-gray-900 dark:text-gray-100">

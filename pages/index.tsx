@@ -21,7 +21,12 @@ export default function Home() {
             }
           </p>
           <div className="mt-6 md:mt-0">
-            <Image src="/logo-ionic.svg" height={200} width={200} />
+            <Image
+              src="/logo-ionic.svg"
+              alt="Ionic Logo"
+              height={200}
+              width={200}
+            />
           </div>
         </section>
 
@@ -32,7 +37,7 @@ export default function Home() {
             }
           </p>
           <div className="mt-6 md:mt-0 md:mr-12 order-2 md:order-1">
-            <Image src="/logo-nx.svg" height={200} width={200} />
+            <Image src="/logo-nx.svg" alt="Nx Logo" height={200} width={200} />
           </div>
         </section>
       </main>
